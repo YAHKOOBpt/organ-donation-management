@@ -1,0 +1,92 @@
+{% extends 'donor/base.html' %}
+{% load static %}
+{% block content %}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">View Donor Details</h1>
+
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">View Donor Details</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Contact No</th>
+                                            <th>Address</th>
+                                            <th>mail</th>
+                                            <th>country</th>                   
+                                            <th>district</th>                                    
+                                            <th>genter</th>
+                                            <th>age</th>
+                                            <th>blood_group</th>
+                                            <th>organs_to_donate</th>
+                                            <th>cause_of_death</th>
+                                            <th>status</th>
+                                            <th>Edit</th>
+                                            <th>Del</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                    
+                                        
+                                        
+                                        <tr>
+                                            <th>{{donor.name}}</th>
+                                            <th>{{donor.mobile}}</th>
+                                            <th>{{donor.address}}</th>
+                                            <th>{{donor.email}}</th>                   
+                                            <th>{{donor.country}}</th>
+                                            <th>{{donor.district}}</th>
+                                            <th>{{donor.gender}}</th>
+                                            <th>{{donor.age}}</th>
+                                            <th>{{donor.blood_grou}}</th>
+                                            <th>{{donor.organs_to_donat}}</th>
+                                            <th>{{donor.cause_of_death}}</th>
+                                            <th>{% if donor.status %}
+                                                    available
+                                                {% else %}
+                                                    Not available
+                                                {% endif %}</th>
+                                          
+                                            
+                                            <td>
+                                                <a href="{% if request.user.is_authenticated %}{% url 'Update_donor_details' request.user.id %}{% endif %}" class="btn btn-success btn-circle">
+                                                    <i class="fas fa-upload"></i>
+                                                </a>
+                                                                                            
+                                            </td>
+                                            <th><a href="{% if request.user.is_authenticated %}{% url 'delete_donor_details' request.user.id %}{% endif %}" class="btn btn-danger btn-circle mx-1">
+                                                    <i class="fas fa-trash"></i>
+                                                </a></th>
+                                        </tr>
+                                       
+                                
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            
+
+        </div>
+        <!-- End of Content Wrapper -->
+{% endblock %}

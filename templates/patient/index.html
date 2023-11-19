@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>home page</h1>
+    <br>
+    <h2>Organ Donation</h2>
+    <br>
+    <h3>Work in progress...</h3>
+    <br>
+    <a href="{% url 'Patient_register' %}">patient Registration</a>
+    <br>
+    <a href="{% url 'Patient_login' %}">patient Login</a>
+    <br>
+    <a href="{% url 'add_patient_details' %}">Create Patient</a>
+    <br>
+    <a href="{% if request.user.is_authenticated %}{% url 'view_patient_details' request.user.id %}{% endif %}">View patient details</a>
+    <br>
+     <a href="{% if request.user.is_authenticated %}{% url 'Update_patient_details' request.user.id %}{% endif %}">Update patient details</a>
+    <br>
+    <a href="{% if request.user.is_authenticated %}{% url 'delete_patient_details' request.user.id %}{% endif %}">delete patient details</a>
+    <br>
+    <a href="{% if request.user.is_authenticated %}{% url 'view_organ_details' %}{% endif %}">view_organ_details</a>
+    <br>
+    
+    <a href="{% url 'view_send_request' %}">view request send</a>
+    
+    
+
+    
+</body>
+</html>

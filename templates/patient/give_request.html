@@ -1,0 +1,161 @@
+
+{{give_request.pk}}
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Donor</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'patient/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'patient/css/sb-admin-2.min.css'%}" rel="stylesheet">
+    <style>
+        select{
+            width: 100%;
+            height: 50px;
+            border-radius: 60px;
+            outline: none;
+            border-color:rgb(158, 173, 185);
+        }
+
+    </style>
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <!-- <div class="col-lg-5 d-none d-lg-block bg-register-image"></div> -->
+                    <div class="col-lg">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Send Request</h1>
+                            </div>
+                            <form class="user" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                
+                                 <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="id" name="donor_id" value="{{give_request.pk}}">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="Name" name="name" value="{{give_request.name}}">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control form-control-user" id="exampleLastName"
+                                            placeholder="Age" name="age" value="{{give_request.age}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="Address" name="Address" value="{{give_request.address}}">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="number" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Contact No" name="Contact" value="{{give_request.mobile}}">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="E-Mail ID" name="mail" value="{{give_request.email}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="country" name="country" value="{{give_request.country}}">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="district" name="district" value="{{give_request.district}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                   
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="Gender" name="genter" value="{{give_request.gender}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label for="blood_group">Blood Group:</label><br>
+                                        <select id="blood_group" name="blood_group">
+                                            <option value="A+"{% if give_request.blood_grou == 'A+' %} selected{% endif %}>A+</option>
+                                            <option value="A-"{% if give_request.blood_grou == 'A-' %} selected{% endif %}>A-</option>
+                                            <option value="B+"{% if give_request.blood_grou == 'B+' %} selected{% endif %}>B+</option>
+                                            <option value="B-"{% if give_request.blood_grou == 'B-' %} selected{% endif %}>B-</option>
+                                            <option value="AB+"{% if give_request.blood_grou == 'AB+' %} selected{% endif %}>AB+</option>
+                                            <option value="AB-"{% if give_request.blood_grou == 'AB-' %} selected{% endif %}>AB-</option>
+                                            <option value="O+"{% if give_request.blood_grou == 'O+' %} selected{% endif %}>O+</option>
+                                            <option value="O-"{% if give_request.blood_grou == 'O-' %} selected{% endif %}>O-</option>
+                                        </select><br><br>
+        
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="organs_to_donate">Organs to Donate:</label><br>
+                                            <select id="organs_to_donate" name="organs_to_donate">
+                                                <option value="Heart" {% if give_request.organs_to_donat == 'Heart' %} selected {% endif %}>Heart</option>
+                                                <option value="Liver" {% if give_request.organs_to_donat == 'Liver' %} selected {% endif %}>Liver</option>
+                                                <option value="Kidney" {% if give_request.organs_to_donat == 'Kidney' %} selected {% endif %}>Kidney</option>
+                                                <option value="Lung" {% if give_request.organs_to_donat == 'Lung' %} selected {% endif %}>Lung</option>
+                                                <option value="Pancreas" {% if give_request.organs_to_donat == 'Pancreas' %} selected {% endif %}>Pancreas</option>
+                                                <option value="Intestine" {% if give_request.organs_to_donat == 'Intestine' %} selected {% endif %}>Intestine</option>
+                                            </select><br><br>
+                                    </div>
+                                </div>
+                                
+
+                                
+                                <button class="btn btn-primary btn-user btn-block" type="submit">Send Request</button> 
+                                    
+                                
+                                <a href="{% if request.user.is_authenticated %}{% url 'view_organ_details' %}{% endif %}" class="btn btn-primary btn-user btn-block">
+                                    Back
+                                </a>
+                                
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'patient/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'patient/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'patient/vendor/jquery-easing/jquery.easing.min.js'%}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'patient/js/sb-admin-2.min.js'%}"></script>
+
+</body>
+
+</html>

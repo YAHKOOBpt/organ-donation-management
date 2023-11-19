@@ -1,0 +1,87 @@
+{% extends 'donor/base.html' %}
+{% load static %}
+{% block content %}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">View Send Request</h1>
+
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">View Send Request</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Patient Name</th>
+                                            <th>Patient mail</th>          
+                                            <th>Patient age</th>                
+                                            <th>Patient Needed Organ</th>                   
+                                            <th>Patient status</th>
+                                            <th>Update</th>
+                                            
+                                            
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                    
+                                        {% for i in requests %}
+                                        
+                                        <tr>
+                                            <th>{{i.patient_name}}</th>
+                                            
+                                            <th>{{i.patient_email}}</th>                   
+                                            
+                                            
+                                            <th>{{i.patient_age}}</th>
+                                            
+                                            <th>{{i.needed_organ}}</th>
+                                            
+                                         <th>{% if i.status %}
+                                                    Approved
+                                                {% else %}
+                                                    Processing
+                                                {% endif %}</th> 
+
+                                            <!-- <th><label for="cause_of_death"></label>
+                                            <select id="cause_of_death" name="status" required>
+                                                <option value="Approved" {% if i.status == 1 %} selected {% endif %}>APPROVED</option>
+                                                <option value="Processing" {% if i.status == 0 %} selected {% endif %}>PROCESSING</option>
+                                                
+                                            </select></th>    -->
+                                            <th><a href="{% url 'Update_organ_request' i.pk %}" class="btn btn-success btn-circle">
+                                                    <i class="fas fa-upload"></i>
+                                                </a></th>                                         
+                                          
+                                            
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        
+                                        
+                                       
+                                
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+       
+        </div>
+        <!-- End of Content Wrapper -->
+{% endblock %}

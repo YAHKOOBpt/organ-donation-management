@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>home page</h1>
+    <br>
+    <h2>Organ Donation</h2>
+    <br>
+    <h3>Work in progress...</h3>
+    <br>
+    <a href="{% url 'donor_register' %}">Donor Registration</a>
+    <br>
+    <a href="{% url 'donor_login' %}">Donor Login</a>
+    <br>
+    <a href="{% url 'add_donor_details' %}">Create Donor</a>
+    <br>
+    <a href="{% if request.user.is_authenticated %}{% url 'view_donor_details' request.user.id %}{% endif %}">View Donor details</a>
+    <br>
+    <a href="{% if request.user.is_authenticated %}{% url 'Update_donor_details' request.user.id %}{% endif %}">Update Donor details</a>
+    <br>
+    <a href="{% if request.user.is_authenticated %}{% url 'delete_donor_details' request.user.id %}{% endif %}">delete Donor details</a>
+    <br>
+    <a href="{% url 'donor_logout' %}">Donor Logout</a>
+    
+
+    
+</body>
+</html>
